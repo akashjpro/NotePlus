@@ -21,9 +21,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
     <property name="settings.editor.selected.configurable" value="AndroidSdkUpdater" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\THUCTAP\NotePlus\images" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
@@ -43,21 +49,29 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1398" height="206" key="GridCell.Tab.0.bottom" timestamp="1626051961093">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state x="100" y="100" width="976" height="634" key="AVDManager" timestamp="1626164047208">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="100" y="100" width="976" height="634" key="AVDManager/0.0.1536.834@0.0.1536.834" timestamp="1626164047208" />
+    <state width="1118" height="157" key="GridCell.Tab.0.bottom" timestamp="1626168864789">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1118" height="157" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626168864789" />
     <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1626051961093" />
-    <state width="1398" height="206" key="GridCell.Tab.0.center" timestamp="1626051961092">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1118" height="157" key="GridCell.Tab.0.center" timestamp="1626168864789">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state width="1118" height="157" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626168864789" />
     <state width="1398" height="206" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1626051961092" />
-    <state width="1398" height="206" key="GridCell.Tab.0.left" timestamp="1626051961092">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1118" height="157" key="GridCell.Tab.0.left" timestamp="1626168864789">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state width="1118" height="157" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626168864789" />
     <state width="1398" height="206" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1626051961092" />
-    <state width="1398" height="206" key="GridCell.Tab.0.right" timestamp="1626051961093">
-      <screen x="0" y="25" width="1440" height="813" />
+    <state width="1118" height="157" key="GridCell.Tab.0.right" timestamp="1626168864789">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state width="1118" height="157" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626168864789" />
     <state width="1398" height="206" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1626051961093" />
   </component>
 </project>
