@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:note/notedetail.dart';
+import 'package:note/viewnote.dart';
 
 void main() {
   runApp(MyApp());
@@ -72,6 +74,16 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        actions: [
+          new IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ViewNote()),
+                );
+              },
+              icon: const Icon(Icons.list))
+        ],
       ),
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
@@ -104,7 +116,13 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        // onPressed: _incrementCounter,
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => NoteDetail()),
+          );
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
