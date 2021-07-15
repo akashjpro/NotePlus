@@ -1,23 +1,27 @@
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class NoteDetail extends StatelessWidget {
+class ViewNote extends StatelessWidget {
   @override
+  final int b = 0xFF000000;
+
   Widget build(BuildContext context) {
-    Widget buildColor(int a){
+    Widget buildColor(int a) {
       return new Container(
-        margin: EdgeInsets.only(right: 10.0),
-        width: 30,
-        height: 30,
-        // padding: EdgeInsets.all(10.0),
-        decoration: BoxDecoration(
-          shape: BoxShape.circle, color: Color(a)
-        ),
+        child: IconButton(onPressed: () { }, icon: Icon(Icons.circle,color: Color(a),size: 40.0,),),
+
+        margin: EdgeInsets.only(right: 3.0,left: 3.0),
+        // width: 30,
+        // height: 30,
+        // // padding: EdgeInsets.all(10.0),
+        //
+        // decoration: BoxDecoration(shape: BoxShape.circle, color: Color(a)),
+
       );
     }
+
     Widget fineColor = new Container(
       padding: EdgeInsets.all(10.0),
-
       child: Row(
         children: [
           buildColor(0xFF000000),
@@ -25,23 +29,30 @@ class NoteDetail extends StatelessWidget {
           buildColor(0xFF4527A0),
           buildColor(0xFF3D5AFE),
           buildColor(0xFFFFEA00),
-
         ],
       ),
     );
     return Scaffold(
       appBar: AppBar(
-        title: Text("Note Detail"),
+        backgroundColor: Color(0xFF000000),
+        title: Text(
+          "Note Detail",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: Container(
         color: Colors.black54,
         padding: EdgeInsets.all(15.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+        child: ListView(
+
+          // mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             TextField(
               // 'Note title',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headline4,
               decoration: InputDecoration.collapsed(
                 hintText: "Note title",
                 hintStyle: TextStyle(color: Colors.white),
@@ -49,10 +60,24 @@ class NoteDetail extends StatelessWidget {
             ),
             Container(
                 alignment: Alignment.centerLeft,
+                margin: EdgeInsets.only(bottom: 10.0),
                 child: Text(
                   'Monday, 12 July 2021 09:00 AM',
                   style: TextStyle(color: Colors.white),
                 )),
+            Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                "Quote Of The Day",
+                style:
+                TextStyle(color: Colors.white, fontWeight: FontWeight.w600),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(5.0),
+              child:
+              Image.asset('images/1.jpg'),
+            ),
             fineColor,
             TextButton(
                 onPressed: null,
@@ -83,19 +108,26 @@ class NoteDetail extends StatelessWidget {
                       padding: EdgeInsets.only(right: 3),
                     ),
                     Text(
-                      "Add image",
+                      "Add url",
                       style: TextStyle(color: Colors.white),
                     )
                   ],
                 )),
-            TextField(
-              decoration: InputDecoration.collapsed(
-                  hintText: "Enter Note Here",
-                  hintStyle: TextStyle(color: Colors.white)),
-            )
           ],
         ),
       ),
     );
   }
+}
+
+class MyBody extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scrollbar(child: Row(
+        children: [
+
+        ],
+    ));
+  }
+
 }
