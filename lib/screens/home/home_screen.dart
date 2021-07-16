@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:note/components/search_widget.dart';
 import 'package:note/components/gridview_widget.dart';
 import 'package:note/database/entities/note.dart';
+import 'package:note/screens/note/note_screen.dart';
+
+import '../../routes.dart';
 
 final List<Note> notes = [
   Note(
@@ -57,7 +60,7 @@ class Home extends StatelessWidget {
           backgroundColor: Color(0xff292929),
           elevation: 0,
           title: Text(
-            'My Notes',
+            'Home',
             style: TextStyle(
                 color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
           ),
@@ -74,7 +77,9 @@ class Home extends StatelessWidget {
               ),
               Positioned(
                   child: FlatButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Navigator.pushNamed(context, NoteScreen.routeName);
+                    },
                     child: Icon(Icons.add,size: 50,color: Colors.black,),
                     color: Color(0xfffdbe3b),
                     shape: CircleBorder(),
