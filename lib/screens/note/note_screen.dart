@@ -99,7 +99,7 @@ class NoteScreen extends StatelessWidget {
                 )),
             SizedBox(height: 8),
             TextField(
-              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
               decoration: InputDecoration.collapsed(
                   hintText: "Enter Note Here",
                   hintStyle: TextStyle(color:  Color(0xffCECECE))),
