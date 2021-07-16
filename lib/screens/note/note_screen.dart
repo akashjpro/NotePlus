@@ -34,14 +34,15 @@ class NoteScreen extends StatelessWidget {
     );
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF000000),
+        backgroundColor: Color(0xff292929),
+        elevation: 0,
         title: Text(
           "Note",
           style: TextStyle(color: Colors.white),
         ),
       ),
       body: Container(
-        color: Colors.black54,
+        color: Color(0xff292929),
         padding: EdgeInsets.all(15.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
