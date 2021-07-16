@@ -38,7 +38,7 @@ class NoteScreen extends StatelessWidget {
         elevation: 0,
         title: Text(
           "Note",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
       body: Container(
@@ -49,12 +49,13 @@ class NoteScreen extends StatelessWidget {
           children: <Widget>[
             TextField(
               // 'Note title',
-              style: Theme.of(context).textTheme.headline4,
+              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
               decoration: InputDecoration.collapsed(
                 hintText: "Note title",
-                hintStyle: TextStyle(color: Colors.white),
+                hintStyle: TextStyle(color: Color(0xffCECECE)),
               ),
             ),
+            SizedBox(height: 8),
             Container(
                 alignment: Alignment.centerLeft,
                 child: Text(
@@ -96,10 +97,12 @@ class NoteScreen extends StatelessWidget {
                     )
                   ],
                 )),
+            SizedBox(height: 8),
             TextField(
+              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
               decoration: InputDecoration.collapsed(
                   hintText: "Enter Note Here",
-                  hintStyle: TextStyle(color: Colors.white)),
+                  hintStyle: TextStyle(color:  Color(0xffCECECE))),
             )
           ],
         ),
