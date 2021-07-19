@@ -23,7 +23,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="41924019-7ebd-4537-9575-aca65d929265" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/lib/screens/note/note_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" beforeDir="false" afterPath="$PROJECT_DIR$/build/4f2a58af27abc49ecf55570043bbf938.cache.dill.track.dill" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/home/home_screen.dart" afterDir="false" />
+>>>>>>> 5bd81413e2f677a02017fa3589273ea7c13a47dd
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,17 +57,25 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
+<<<<<<< HEAD
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../AppData/QuanLyNhapKho" />
+=======
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
+>>>>>>> 5bd81413e2f677a02017fa3589273ea7c13a47dd
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Admin\Desktop\THUCTAP\NotePlus\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\ITS_J\hy_develop_note\lib\layout" />
-      <recent name="E:\ITS_J\hy_develop_note\images" />
-      <recent name="E:\ITS_J\hy_develop_note\assets" />
+      <recent name="$PROJECT_DIR$/lib/database" />
+      <recent name="$PROJECT_DIR$/lib/components" />
+      <recent name="$PROJECT_DIR$/lib/screens/home" />
     </key>
   </component>
   <component name="RunManager">
@@ -66,10 +84,7 @@
       <method v="2" />
     </configuration>
   </component>
-  <component name="SpellCheckerSettings" BundledDictionaries="0" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" Dictionaries="0" CorrectionsLimit="5" DefaultDictionary="application-level" UseSingleDictionary="true" />
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="41924019-7ebd-4537-9575-aca65d929265" name="Default Changelist" comment="" />
@@ -93,6 +108,7 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< HEAD
     <state x="453" y="171" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1626136026634">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -129,10 +145,47 @@
     </state>
     <state width="1306" height="179" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1366.738@0.0.1366.738" timestamp="1626144269665" />
     <state width="1306" height="178" key="GridCell.Tab.0.right/0.0.1366.738/1366.0.1366.738@1366.0.1366.738" timestamp="1626319008743" />
-    <state width="1398" height="206" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1626051961093" />
-    <state x="184" y="14" key="SettingsEditor" timestamp="1626082072664">
-      <screen x="0" y="0" width="1366" height="738" />
+=======
+    <state x="100" y="100" width="976" height="634" key="AVDManager" timestamp="1626164047208">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
-    <state x="184" y="14" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1626082072664" />
+    <state x="100" y="100" width="976" height="634" key="AVDManager/0.0.1536.834@0.0.1536.834" timestamp="1626164047208" />
+    <state width="1398" height="209" key="GridCell.Tab.0.bottom" timestamp="1626423091879">
+      <screen x="0" y="25" width="1440" height="821" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.bottom/0.0.1440.900@0.0.1440.900" timestamp="1626420479994" />
+    <state width="1118" height="157" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1626168864789" />
+    <state width="1398" height="206" key="GridCell.Tab.0.bottom/0.25.1440.813@0.25.1440.813" timestamp="1626051961093" />
+    <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.25.1440.820@0.25.1440.820" timestamp="1626422266676" />
+    <state width="1398" height="209" key="GridCell.Tab.0.bottom/0.25.1440.821@0.25.1440.821" timestamp="1626423091879" />
+    <state width="1398" height="209" key="GridCell.Tab.0.center" timestamp="1626423091877">
+      <screen x="0" y="25" width="1440" height="821" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.center/0.0.1440.900@0.0.1440.900" timestamp="1626420479992" />
+    <state width="1118" height="157" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1626168864789" />
+    <state width="1398" height="206" key="GridCell.Tab.0.center/0.25.1440.813@0.25.1440.813" timestamp="1626051961092" />
+    <state width="1398" height="209" key="GridCell.Tab.0.center/0.25.1440.820@0.25.1440.820" timestamp="1626422266674" />
+    <state width="1398" height="209" key="GridCell.Tab.0.center/0.25.1440.821@0.25.1440.821" timestamp="1626423091877" />
+    <state width="1398" height="209" key="GridCell.Tab.0.left" timestamp="1626423091876">
+      <screen x="0" y="25" width="1440" height="821" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.left/0.0.1440.900@0.0.1440.900" timestamp="1626420479991" />
+    <state width="1118" height="157" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1626168864789" />
+    <state width="1398" height="206" key="GridCell.Tab.0.left/0.25.1440.813@0.25.1440.813" timestamp="1626051961092" />
+    <state width="1398" height="209" key="GridCell.Tab.0.left/0.25.1440.820@0.25.1440.820" timestamp="1626422266673" />
+    <state width="1398" height="209" key="GridCell.Tab.0.left/0.25.1440.821@0.25.1440.821" timestamp="1626423091876" />
+    <state width="1398" height="209" key="GridCell.Tab.0.right" timestamp="1626423091878">
+      <screen x="0" y="25" width="1440" height="821" />
+    </state>
+    <state width="1398" height="245" key="GridCell.Tab.0.right/0.0.1440.900@0.0.1440.900" timestamp="1626420479993" />
+    <state width="1118" height="157" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1626168864789" />
+>>>>>>> 5bd81413e2f677a02017fa3589273ea7c13a47dd
+    <state width="1398" height="206" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1626051961093" />
+    <state width="1398" height="209" key="GridCell.Tab.0.right/0.25.1440.820@0.25.1440.820" timestamp="1626422266675" />
+    <state width="1398" height="209" key="GridCell.Tab.0.right/0.25.1440.821@0.25.1440.821" timestamp="1626423091878" />
+    <state x="229" y="65" key="SettingsEditor" timestamp="1626417578771">
+      <screen x="0" y="25" width="1440" height="819" />
+    </state>
+    <state x="229" y="65" key="SettingsEditor/0.25.1440.819@0.25.1440.819" timestamp="1626417578771" />
   </component>
 </project>
