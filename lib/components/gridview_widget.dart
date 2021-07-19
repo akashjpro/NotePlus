@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:note/database/entities/note.dart';
+import 'package:note/database/models/note.dart';
 
 class GridViewNotes extends StatefulWidget {
   List<Note> notes;
@@ -17,27 +17,31 @@ class GridViewNotesState extends State<GridViewNotes> {
   Color hexToColor(String code) {
     return new Color(int.parse(code, radix: 16));
   }
+
   List<Widget> note_builder(List<Note> notes) {
     var items = notes.map((Note) => Container(
           width: 190.0,
           decoration: BoxDecoration(
-            border:Border.all(width: 0,style: BorderStyle.none),
+            border: Border.all(width: 0, style: BorderStyle.none),
             borderRadius: BorderRadius.circular(15),
-            color:Color(Note.typeColor),
+            color: Color(Note.typeColor),
           ),
-          child:Column(
+          child: Column(
             children: [
               Note.uriImage == null
                   ? Container()
-                  : Expanded(child: ClipRRect(
-                     borderRadius: BorderRadius.only(topLeft:Radius.circular(15),topRight: Radius.circular(15)),
-                     child: Image.asset(
-                      Note.uriImage ?? '',
-                      width: 190,
-                      height: 400,
-                      fit: BoxFit.fill,
-                ),
-              )),
+                  : Expanded(
+                      child: ClipRRect(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(15),
+                          topRight: Radius.circular(15)),
+                      child: Image.asset(
+                        Note.uriImage ?? '',
+                        width: 190,
+                        height: 400,
+                        fit: BoxFit.fill,
+                      ),
+                    )),
               Container(
                 padding: EdgeInsets.all(8),
                 child: Column(
@@ -56,7 +60,7 @@ class GridViewNotesState extends State<GridViewNotes> {
                     Text(
                       Note.content,
                       style: TextStyle(
-                        color:Colors.white.withOpacity(0.6),
+                        color: Colors.white.withOpacity(0.6),
                         fontSize: 16,
                       ),
                       maxLines: 2,
@@ -65,17 +69,18 @@ class GridViewNotesState extends State<GridViewNotes> {
                     Note.webLink == null
                         ? Container()
                         : Text(
-                      Note.webLink ?? '',
-                      style: TextStyle(
-                        color: Colors.white.withOpacity(0.6),
-                        fontSize: 16,
-                        decoration: TextDecoration.underline,
-                      ),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
+                            Note.webLink ?? '',
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.6),
+                              fontSize: 16,
+                              decoration: TextDecoration.underline,
+                            ),
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                          ),
                     Text(
-                      DateTime.fromMillisecondsSinceEpoch(Note.id * 1000).toIso8601String(),
+                      DateTime.fromMillisecondsSinceEpoch(Note.id * 1000)
+                          .toIso8601String(),
                       style: TextStyle(
                         color: Colors.white.withOpacity(0.6),
                         fontSize: 14,
@@ -91,13 +96,17 @@ class GridViewNotesState extends State<GridViewNotes> {
         ));
     return items.toList();
   }
+
   List<StaggeredTile> staggered_tile_builder(List<Note> notes) {
-    var items = notes.map((Note){
-      if(Note.uriImage==null) return StaggeredTile.extent(1,120);
-      else return StaggeredTile.extent(1,350);
+    var items = notes.map((Note) {
+      if (Note.uriImage == null)
+        return StaggeredTile.extent(1, 120);
+      else
+        return StaggeredTile.extent(1, 350);
     });
     return items.toList();
   }
+
   @override
   Widget build(BuildContext context) {
     return StaggeredGridView.count(
@@ -107,9 +116,9 @@ class GridViewNotesState extends State<GridViewNotes> {
       scrollDirection: Axis.vertical,
       shrinkWrap: true,
       padding: EdgeInsets.symmetric(vertical: 10),
-      physics:  NeverScrollableScrollPhysics(),
+      physics: NeverScrollableScrollPhysics(),
       children: note_builder(widget.notes),
-      staggeredTiles:staggered_tile_builder(widget.notes),
+      staggeredTiles: staggered_tile_builder(widget.notes),
     );
     // TODO: implement build
     // return GridView.extent(
