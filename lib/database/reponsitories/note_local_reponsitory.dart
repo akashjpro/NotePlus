@@ -59,7 +59,7 @@ class NotesDatabase {
       throw Exception('ID $id not found');
   }
 
-  Future<List<Note>> readAllNote(int id) async {
+  Future<List<Note>> readAllNote() async {
     final db = await instance.database;
     final orderBy = '${NoteFields.id} ASC';
     final result = await db.query(tableNotes, orderBy: orderBy);
@@ -87,7 +87,6 @@ class NotesDatabase {
 
   Future close() async {
     final db = await instance.database;
-
     db.close();
   }
 }
