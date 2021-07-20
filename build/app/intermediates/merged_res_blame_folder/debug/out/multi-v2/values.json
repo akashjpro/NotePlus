@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\ITS_J\\NOTE\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "E:\\ITS_J\\hy_develop_note\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
-                    "source": "E:\\ITS_J\\NOTE\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "E:\\ITS_J\\hy_develop_note\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
