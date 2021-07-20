@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:note/components/search_widget.dart';
 import 'package:note/components/gridview_widget.dart';
-import 'package:note/database/entities/note.dart';
+import 'package:note/database/models/note.dart';
 import 'package:note/screens/note/note_screen.dart';
 
 import '../../routes.dart';

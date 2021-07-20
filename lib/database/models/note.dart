@@ -1,3 +1,4 @@
+final String tableNotes = 'notes';
 class NoteFields {
   static final List<String> values = [
     id,
@@ -29,4 +30,21 @@ class Note {
       this.uriImage,
       this.webLink,
       required this.typeColor});
+  static Note fromJson(Map<String, Object?> json) => Note(
+    id: json[NoteFields.id] as int,
+    title: json[NoteFields.title] as String,
+    content: json[NoteFields.content] as String,
+    typeColor: json[NoteFields.typeColor] as int,
+    webLink: json[NoteFields.webLink] as String,
+    uriImage: json[NoteFields.uriImage] as String,
+  );
+
+  Map<String, Object?> toJson() => {
+    NoteFields.id: id,
+    NoteFields.title: title,
+    NoteFields.content: content,
+    NoteFields.typeColor: typeColor,
+    NoteFields.uriImage:uriImage,
+    NoteFields.webLink: webLink,
+  };
 }
