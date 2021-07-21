@@ -1,18 +1,34 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:note/components/pick_image_widget.dart';
+import 'package:path_provider/path_provider.dart';
 
-class NoteScreen extends StatelessWidget {
-
+class NoteScreen extends StatefulWidget {
   static String routeName = "/note";
+  @override
+  State<StatefulWidget> createState() => NoteScreenState();
+}
 
+class NoteScreenState extends State<NoteScreen> {
+  File? imagePick;
+  final ImagePicker _picker = ImagePicker();
   @override
   Widget build(BuildContext context) {
     int b = 0xFF000000;
     final _backGrounColor = Color(b);
     Widget buildColor(int a) {
       return new Container(
-        child: IconButton(onPressed: () { }, icon: Icon(Icons.circle,color: Color(a),size: 40.0,),),
-        margin: EdgeInsets.only(right: 3.0,left: 3.0),
+        child: IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.circle,
+            color: Color(a),
+            size: 40.0,
+          ),
+        ),
+        margin: EdgeInsets.only(right: 3.0, left: 3.0),
         // width: 30,
         // height: 30,
         // // padding: EdgeInsets.all(10.0),
@@ -38,7 +54,8 @@ class NoteScreen extends StatelessWidget {
         elevation: 0,
         title: Text(
           "Note",
-          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+          style: TextStyle(
+              color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
         ),
       ),
       body: Container(
@@ -47,9 +64,17 @@ class NoteScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
+            if (imagePick != null)
+              GestureDetector(
+                child: Image.file(imagePick!),
+                onTap: () => _showImageTapActionSheet(context),
+              ),
             TextField(
               // 'Note title',
-              style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold),
               decoration: InputDecoration.collapsed(
                 hintText: "Note title",
                 hintStyle: TextStyle(color: Color(0xffCECECE)),
@@ -63,23 +88,10 @@ class NoteScreen extends StatelessWidget {
                   style: TextStyle(color: Colors.white),
                 )),
             fineColor,
-            TextButton(
-                onPressed: null,
-                child: Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.only(right: 3),
-                      child: Icon(
-                        Icons.image,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      "Add image",
-                      style: TextStyle(color: Colors.white),
-                    )
-                  ],
-                )),
+            PickImage(
+              imagePicked: imagePick,
+              showImagePicked: showImage,
+            ),
             TextButton(
                 onPressed: null,
                 child: Row(
@@ -99,14 +111,105 @@ class NoteScreen extends StatelessWidget {
                 )),
             SizedBox(height: 8),
             TextField(
-              style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 14,
+                  fontWeight: FontWeight.bold),
               decoration: InputDecoration.collapsed(
                   hintText: "Enter Note Here",
-                  hintStyle: TextStyle(color:  Color(0xffCECECE))),
+                  hintStyle: TextStyle(color: Color(0xffCECECE))),
             )
           ],
         ),
       ),
     );
+  }
+
+  void showImage(File file) {
+    setState(() {
+      imagePick = file;
+    });
+  }
+
+  void unPickImage() {
+    setState(() {
+      imagePick = null;
+    });
+  }
+
+  Future getImageFrom(ImageSource source) async {
+    XFile? image = await _picker.pickImage(source: source);
+    setState(() {
+      imagePick = File(image!.path);
+    });
+  }
+
+  Future<void> saveFileToAppDirectory(File? filePicked) async {
+    if (filePicked != null) {
+      Directory appDocDir = await getApplicationDocumentsDirectory();
+      String appDocPath = appDocDir.path;
+      final File newImage = await filePicked.copy('$appDocPath/image1.png');
+      print(newImage.path);
+    }
+  }
+
+  void _showImageTapActionSheet(BuildContext context) {
+    if (Platform.isAndroid) {
+      showModalBottomSheet(
+        elevation: 10,
+        context: context,
+        builder: (context) => Container(
+          height: 140,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ListTile(
+                  leading: Icon(Icons.delete),
+                  title: Text('Delete'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    unPickImage();
+                  }),
+              ListTile(
+                leading: Icon(Icons.photo_album_rounded),
+                title: Text('Gallery'),
+                onTap: () {
+                  Navigator.pop(context);
+                  getImageFrom(ImageSource.gallery);
+                },
+              )
+            ],
+          ),
+        ),
+      );
+    } else if (Platform.isIOS) {
+      showCupertinoModalPopup(
+          context: context,
+          builder: (context) => CupertinoActionSheet(
+                actions: [
+                  CupertinoActionSheetAction(
+                    child: Text(
+                      'Delete',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      unPickImage();
+                    },
+                  ),
+                  CupertinoActionSheetAction(
+                    child: Text(
+                      'Gallery',
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    onPressed: () {
+                      Navigator.pop(context);
+                      getImageFrom(ImageSource.gallery);
+                    },
+                  ),
+                ],
+              ));
+    }
   }
 }

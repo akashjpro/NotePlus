@@ -58,7 +58,7 @@
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/images" />
-    <property name="settings.editor.selected.configurable" value="dart.settings" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -137,9 +137,10 @@
     <state width="1398" height="206" key="GridCell.Tab.0.right/0.25.1440.813@0.25.1440.813" timestamp="1626051961093" />
     <state width="1398" height="209" key="GridCell.Tab.0.right/0.25.1440.820@0.25.1440.820" timestamp="1626422266675" />
     <state width="1398" height="209" key="GridCell.Tab.0.right/0.25.1440.821@0.25.1440.821" timestamp="1626423091878" />
-    <state x="229" y="65" key="SettingsEditor" timestamp="1626417578771">
-      <screen x="0" y="25" width="1440" height="819" />
+    <state x="244" y="41" key="SettingsEditor" timestamp="1626754590197">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="244" y="41" key="SettingsEditor/0.0.1536.834@0.0.1536.834" timestamp="1626754590197" />
     <state x="229" y="65" key="SettingsEditor/0.25.1440.819@0.25.1440.819" timestamp="1626417578771" />
   </component>
 </project>
