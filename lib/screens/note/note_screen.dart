@@ -4,9 +4,11 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:note/helper/shared_prefs.dart';
 import 'package:path/path.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class NoteScreen extends StatefulWidget {
   static String routeName = "/note";
@@ -18,12 +20,10 @@ class NoteScreen extends StatefulWidget {
 class _NoteScreenState extends State<NoteScreen> {
   File? imageFile;
   File? imageLocal;
+  String? customImageFile;
+  Image? image;
 
   //==========Test======================
-  // _saveImage(value) async {
-  //   SharedPreferences saveImage = await SharedPreferences.getInstance();
-  //   saveImage.setString(img, value);
-  // }
 
   Future<void> _saveImage(File file) async {
     Directory a = await getApplicationDocumentsDirectory();
@@ -31,22 +31,24 @@ class _NoteScreenState extends State<NoteScreen> {
     final fileName = basename(file.path);
     final File localImage = await file.copy('$path/$fileName');
     print("iamge file = $localImage");
+    print("iamge file = $path");
+    print("iamge file = $fileName");
+
     setState(() {
       imageLocal = localImage;
     });
   }
 
-  // Future saveImage(File file) async {
-  //   if (file == null) return;
-  //
-  //   File tmpFile = File(file.path);
-  //   tmpFile = await tmpFile.copy(tmpFile.path);
-  //
-  //   setState(() {
-  //     imageLocal = tmpFile;
-  //   });
-  // }
-
+  loadImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final imageKeyValue = prefs.getString(IMAGE_KEY);
+    if (imageKeyValue != null) {
+      final imageString = await ImageSharedPrefs.loadImageFromPrefs();
+      setState(() {
+        imageFile = ImageSharedPrefs.imageFrom64BaseString(imageString!);
+      });
+    }
+  }
   //====================================
 
   _openGallery(BuildContext context) async {
@@ -54,13 +56,14 @@ class _NoteScreenState extends State<NoteScreen> {
 
     if (picture != null) {
       setState(() {
-        _saveImage(File(picture.path));
+      _saveImage(File(picture.path));
       });
 
       // setState(() {
       //   imageFile = File(picture.path);
       // });
-      // saveImage(imageFile!);
+      // ImageSharedPrefs.saveImageToPrefs(
+      //     ImageSharedPrefs.base64String(imageFile!.readAsBytesSync()));
     }
     Navigator.of(context).pop();
   }
@@ -72,9 +75,10 @@ class _NoteScreenState extends State<NoteScreen> {
         _saveImage(File(picture.path));
       });
       // setState(() {
-        // imageFile = File(picture.path);
+      // imageFile = File(picture.path);
       // });
-      // saveImage(imageFile!);
+      // ImageSharedPrefs.saveImageToPrefs(
+      //     ImageSharedPrefs.base64String(imageFile!.readAsBytesSync()));
     }
     Navigator.of(context).pop();
   }
@@ -109,24 +113,26 @@ class _NoteScreenState extends State<NoteScreen> {
   }
 
   Widget showImage() {
-    return imageLocal == null
+    return imageFile == null
         ? Container()
         : Expanded(
             child: Container(
                 padding: EdgeInsets.only(top: 10.0),
                 child: ClipRRect(
                     child: Image.file(
-                  imageLocal!,
+                  imageFile!,
                   width: 200,
                   height: 200,
                   fit: BoxFit.cover,
                 ))));
   }
-
+  @override
+  void initState() {
+    super.initState();
+    loadImage();
+  }
   @override
   Widget build(BuildContext context) {
-    int b = 0xFF000000;
-
     Widget buildColor(int a) {
       return new Container(
         child: IconButton(
