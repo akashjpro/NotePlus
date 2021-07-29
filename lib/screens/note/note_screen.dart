@@ -20,57 +20,6 @@ class _NoteScreenState extends State<NoteScreen> {
   File? imageLocal;
 
   //==========Test======================
-  // GlobalKey _globalKey = GlobalKey();
-
-  // @override
-  // void initState(){
-  //   super.initState();
-  //   _loadImage();
-  // }
-  // _toastInfo(String info) {
-  //   Fluttertoast.showToast(msg: info, toastLength: Toast.LENGTH_LONG);
-  // }
-  // _requestPermission() async {
-  //   Map<Permission, PermissionStatus> statuses = await [
-  //     Permission.storage,
-  //   ].request();
-  //
-  //   final info = statuses[Permission.storage].toString();
-  //   print(info);
-  //   _toastInfo(info);
-  // }
-  // _saveScreen() async {
-  //   RenderRepaintBoundary boundary =
-  //   _globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
-  //   var image = await boundary.toImage();
-  //   var ui;
-  //   ByteData? byteData = await (image.toByteData(format: ui.ImageByteFormat.png));
-  //   if (byteData != null) {
-  //     final result =
-  //     await ImageGallerySaver.saveImage(byteData.buffer.asUint8List());
-  //     print("===================== $result");
-  //     _toastInfo(result.toString());
-  //   }
-  // }
-
-  // _getHttp() async {
-  //   var response = await Dio().get(
-  //       "https://ss0.baidu.com/94o3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=a62e824376d98d1069d40a31113eb807/838ba61ea8d3fd1fc9c7b6853a4e251f94ca5f46.jpg",
-  //       options: Options(responseType: ResponseType.bytes));
-  //   final result = await ImageGallerySaver.saveImage(
-  //       Uint8List.fromList(response.data),
-  //       quality: 60,
-  //       name: "hello");
-  //   print(result);
-  //   _toastInfo("$result");
-  // }
-  // _loadImage() async {
-  //   SharedPreferences saveImage = await SharedPreferences.getInstance();
-  //   setState(() {
-  //     _imagePath = saveImage.getString(img);
-  //   });
-  // }
-
   // _saveImage(value) async {
   //   SharedPreferences saveImage = await SharedPreferences.getInstance();
   //   saveImage.setString(img, value);
