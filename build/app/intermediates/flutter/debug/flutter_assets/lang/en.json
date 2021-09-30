@@ -6,11 +6,14 @@
     "addImage" : "Add image",
     "addUrl": "Add url",
     "enterNote": "Enter Note Here",
-    "alert": "Please enter title and content",
+    "alert": "Please enter title or content",
     "empty": "No Notes",
     "choice": "Make a choice!",
     "gallery": "Gallery",
     "camera": "Camera",
     "url": "Paste url here:",
-    "enterUrl": "Enter Url Here"
+    "enterUrl": "Enter Url Here",
+    "choiceDe": "Make a choice!",
+    "delete": "Delete",
+    "cancel": "Cancel"
 }
