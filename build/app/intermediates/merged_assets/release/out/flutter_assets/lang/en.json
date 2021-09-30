@@ -1,0 +1,19 @@
+{
+    "home": "Home",
+    "searchNotes" : "Search Notes",
+    "note" : "Note",
+    "noteTitle": "Note Title",
+    "addImage" : "Add image",
+    "addUrl": "Add url",
+    "enterNote": "Enter Note Here",
+    "alert": "Please enter title or content",
+    "empty": "No Notes",
+    "choice": "Make a choice!",
+    "gallery": "Gallery",
+    "camera": "Camera",
+    "url": "Paste url here:",
+    "enterUrl": "Enter Url Here",
+    "choiceDe": "Make a choice!",
+    "delete": "Delete",
+    "cancel": "Cancel"
+}

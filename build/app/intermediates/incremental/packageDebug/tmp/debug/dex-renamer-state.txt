@@ -1,4 +1,4 @@
-#Wed Sep 01 16:02:23 ICT 2021
-base.0=E\:\\ITS_J\\NOTE_v2\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
-path.0=classes.dex
+#Sun Sep 12 17:42:55 ICT 2021
+base.0=C\:\\Users\\Admin\\Desktop\\THUCTAP\\NotePlus\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
+path.0=classes.dex

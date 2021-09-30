@@ -1,0 +1,16 @@
+{
+    "home": "Màn hình chính",
+    "searchNotes" : "Tiềm kiếm ghi chú",
+    "note" : "Ghi chú",
+    "noteTitle": "Tiêu đề",
+    "addImage" : "Thêm ảnh",
+    "addUrl": "Thêm liên kết",
+    "enterNote": "Thêm nội dung",
+    "alert": "Vui lòng thêm tiêu đề hoặc nội dung!",
+    "empty": "Chưa có ghi chú!",
+    "choice": "Thêm ảnh từ ?",
+    "gallery": "Thư viện",
+    "camera": "Máy ảnh",
+    "url": "Thêm liên kết:",
+    "enterUrl": "Nhập liên kết"
+}

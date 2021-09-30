@@ -1,7 +1,7 @@
 # compiler: R8
 # compiler_version: 2.1.62
 # min_api: 16
-# pg_map_id: b3a8b29
+# pg_map_id: 9bbb63c
 # common_typos_disable
 androidx.activity.Cancellable -> androidx.activity.a:
 androidx.activity.ComponentActivity -> androidx.activity.b:
@@ -722,7 +722,7 @@ com.baseflow.permissionhandler.PermissionUtils -> b.a.a.o:
     void updatePermissionShouldShowStatus(android.app.Activity,int) -> f
 com.baseflow.permissionhandler.ServiceManager -> b.a.a.p:
     void checkServiceStatus(int,android.content.Context,com.baseflow.permissionhandler.ServiceManager$SuccessCallback,com.baseflow.permissionhandler.ErrorCallback) -> a
-    boolean isBluetoothServiceEnabled() -> b
+    boolean isBluetoothServiceEnabled(android.content.Context) -> b
     boolean isLocationServiceEnablePreKitKat(android.content.Context) -> c
     boolean isLocationServiceEnabled(android.content.Context) -> d
     boolean isLocationServiceEnabledKitKat(android.content.Context) -> e
@@ -2849,7 +2849,7 @@ io.flutter.plugins.imagepicker.ImagePickerCache -> io.flutter.plugins.imagepicke
     java.lang.String retrievePendingCameraMediaUriPath() -> c
     void saveDimensionWithMethodCall(io.flutter.plugin.common.MethodCall) -> d
     void savePendingCameraMediaUriPath(android.net.Uri) -> e
-    void saveResult(java.lang.String,java.lang.String,java.lang.String) -> f
+    void saveResult(java.util.ArrayList,java.lang.String,java.lang.String) -> f
     void saveTypeWithMethodCallName(java.lang.String) -> g
     void setMaxDimension(java.lang.Double,java.lang.Double,int) -> h
     void setType(java.lang.String) -> i

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:note/database/models/note.dart';
 import 'package:note/database/reponsitories/note_local_reponsitory.dart';
+import 'package:note/helper/appLocalizations.dart';
 import 'package:note/screens/note/note_screen.dart';
 
 class GridViewNotes extends StatefulWidget {
@@ -158,12 +159,12 @@ class GridViewNotesState extends State<GridViewNotes> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Make a choice!"),
+            title: Text(AppLocalizations.of(context)!.translate("choiceDe")!,),
             content: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 GestureDetector(
-                  child: Text("Delete"),
+                  child: Text(AppLocalizations.of(context)!.translate("delete")!,),
                   onTap: () {
                     NotesDatabase.instance.delete(id);
                     refreshNotes();
@@ -172,7 +173,7 @@ class GridViewNotesState extends State<GridViewNotes> {
                 ),
                 Padding(padding: EdgeInsets.all(8.0)),
                 GestureDetector(
-                  child: Text("Cancel"),
+                  child: Text(AppLocalizations.of(context)!.translate("cancel")!,),
                   onTap: () {
                     Navigator.of(context).pop();
                   },

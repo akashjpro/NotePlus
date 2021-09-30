@@ -896,6 +896,7 @@ io.flutter.plugin.editing.FlutterTextUtils:
 com.google.common.base.CharMatcher$JavaUpperCase
 com.google.common.base.Enums
 androidx.core.provider.FontsContractCompat$4$3
+com.google.common.primitives.Chars$CharArrayAsList
 androidx.core.app.RemoteActionCompat:
     public void <init>(androidx.core.graphics.drawable.IconCompat,java.lang.CharSequence,java.lang.CharSequence,android.app.PendingIntent)
     public void <init>(androidx.core.app.RemoteActionCompat)
@@ -909,7 +910,6 @@ androidx.core.app.RemoteActionCompat:
     public java.lang.CharSequence getContentDescription()
     public android.app.PendingIntent getActionIntent()
     public android.app.RemoteAction toRemoteAction()
-com.google.common.primitives.Chars$CharArrayAsList
 androidx.core.graphics.BitmapCompat
 com.google.common.collect.Lists$RandomAccessPartition
 androidx.core.provider.SelfDestructiveThread
@@ -1025,8 +1025,8 @@ com.google.common.collect.TreeRangeMap$SubRangeMap$SubRangeMapAsMap
 com.google.common.collect.Synchronized$SynchronizedSortedSet
 kotlin.ULong
 com.google.common.graph.ImmutableNetwork$3
-javax.annotation.Detainted
 kotlin.contracts.Effect
+javax.annotation.Detainted
 org.intellij.lang.annotations.JdkConstants$TabPlacement
 com.itsj.group.app.note.R$dimen
 io.flutter.embedding.engine.systemchannels.TextInputChannel:
@@ -1207,8 +1207,8 @@ kotlin.coroutines.jvm.internal.DebugMetadata
 com.google.common.collect.Maps$4
 com.google.common.collect.TreeRangeMap$SubRangeMap$SubRangeMapAsMap$3
 androidx.core.graphics.drawable.RoundedBitmapDrawableFactory$DefaultRoundedBitmapDrawable
-javax.annotation.RegEx$Checker
 kotlin.ranges.ULongProgression$Companion
+javax.annotation.RegEx$Checker
 com.google.common.cache.AbstractCache$StatsCounter
 kotlin.InitializedLazyImpl
 javax.annotation.Tainted
@@ -2644,8 +2644,8 @@ com.google.common.collect.MultimapBuilder$LinkedListSupplier
 androidx.collection.CircularIntArray
 com.google.common.reflect.Invokable$ConstructorInvokable
 com.google.common.graph.Traverser$TreeTraverser$1
-javax.annotation.concurrent.ThreadSafe
 kotlin.collections.AbstractSet$Companion
+javax.annotation.concurrent.ThreadSafe
 com.google.common.util.concurrent.MoreExecutors$Application
 com.google.common.util.concurrent.WrappingExecutorService
 androidx.core.content.res.FontResourcesParserCompat$FontFamilyFilesResourceEntry
@@ -2771,8 +2771,8 @@ com.google.common.collect.MultimapBuilder$EnumSetSupplier
 com.google.common.collect.AbstractBiMap$Inverse
 com.google.common.collect.SetMultimap
 com.itsj.group.app.note.R$integer
-io.flutter.embedding.engine.FlutterEngineGroup$1
 com.google.common.collect.Iterables$8
+io.flutter.embedding.engine.FlutterEngineGroup$1
 io.flutter.embedding.android.FlutterEngineProvider
 androidx.core.math.MathUtils
 com.google.common.collect.ForwardingMapEntry
@@ -3027,8 +3027,8 @@ com.google.common.util.concurrent.AbstractService$1
 io.flutter.app.FlutterActivityEvents
 com.tekartik.sqflite.R$id
 kotlin.ranges.UIntProgressionIterator
-androidx.fragment.app.BackStackRecord
 com.google.common.util.concurrent.AsyncFunction
+androidx.fragment.app.BackStackRecord
 kotlin.collections.ArraysKt___ArraysKt$withIndex$6
 com.google.common.collect.RegularImmutableMap
 com.google.common.cache.LocalCache$LocalManualCache
@@ -3285,8 +3285,8 @@ io.flutter.embedding.engine.loader.FlutterLoader:
     private static final java.lang.String DEFAULT_LIBRARY
     private static final java.lang.String DEFAULT_KERNEL_BLOB
     private static io.flutter.embedding.engine.loader.FlutterLoader instance
-javax.annotation.CheckForNull
 kotlin.collections.UCollectionsKt___UCollectionsKt
+javax.annotation.CheckForNull
 com.google.common.base.Predicates$ObjectPredicate$3
 com.google.common.primitives.Chars
 androidx.core.app.JobIntentService$CompatWorkEnqueuer
@@ -3431,6 +3431,7 @@ androidx.viewpager.widget.ViewPager
 com.google.common.hash.MessageDigestHashFunction
 io.flutter.plugins.imagepicker.ImagePickerCache:
     static final java.lang.String MAP_KEY_PATH
+    static final java.lang.String MAP_KEY_PATH_LIST
     static final java.lang.String MAP_KEY_MAX_WIDTH
     static final java.lang.String MAP_KEY_MAX_HEIGHT
     static final java.lang.String MAP_KEY_IMAGE_QUALITY
@@ -3485,16 +3486,16 @@ com.google.common.io.CountingOutputStream
 com.google.common.collect.Multisets$1
 com.google.common.util.concurrent.CycleDetectingLockFactory$Policies$2
 com.google.common.base.CaseFormat
-androidx.fragment.app.FragmentFactory
 androidx.customview.widget.ExploreByTouchHelper$2
+androidx.fragment.app.FragmentFactory
 com.google.common.collect.TreeBasedTable$2
 kotlin.jvm.internal.MutablePropertyReference
 kotlin.reflect.KProperty2$Getter
 androidx.viewpager.R$string
 com.google.common.collect.MapMakerInternalMap$KeyIterator
 androidx.core.app.ActivityRecreator
-com.google.errorprone.annotations.IncompatibleModifiers
 kotlin.internal.PlatformDependent
+com.google.errorprone.annotations.IncompatibleModifiers
 com.google.common.util.concurrent.ServiceManager$Listener
 com.google.common.cache.CacheBuilderSpec$IntegerParser
 com.google.common.cache.CacheBuilder$1
@@ -5063,8 +5064,8 @@ com.google.common.collect.Synchronized$SynchronizedQueue
 androidx.fragment.app.FragmentViewLifecycleOwner
 com.google.common.collect.ImmutableList$ReverseImmutableList
 kotlin.sequences.SequencesKt__SequencesKt$generateSequence$2
-com.google.common.reflect.TypeToken$TypeFilter
 androidx.core.content.ContextCompat$MainHandlerExecutor
+com.google.common.reflect.TypeToken$TypeFilter
 androidx.lifecycle.ViewModelProvider$KeyedFactory
 androidx.core.view.accessibility.AccessibilityViewCommand$SetTextArguments
 androidx.fragment.app.Fragment$2:
@@ -6041,8 +6042,8 @@ kotlin.jvm.JvmSynthetic
 com.google.common.reflect.Invokable
 androidx.exifinterface.media.ExifInterface$IfdType
 com.google.common.collect.FilteredEntryMultimap$Keys$1$1
-com.google.j2objc.annotations.RetainedLocalRef
 kotlin.reflect.KMutableProperty1
+com.google.j2objc.annotations.RetainedLocalRef
 kotlin.properties.Delegates
 com.google.common.collect.Maps$TransformedEntriesSortedMap
 com.google.common.collect.ImmutableRangeSet$Builder
@@ -6128,8 +6129,6 @@ io.flutter.embedding.engine.plugins.FlutterPlugin$FlutterAssets:
     public abstract java.lang.String getAssetFilePathBySubpath(java.lang.String,java.lang.String)
 com.google.common.util.concurrent.Service$1
 com.google.common.escape.ArrayBasedCharEscaper
-com.google.common.graph.MutableNetwork
-com.google.common.eventbus.Dispatcher$LegacyAsyncDispatcher
 androidx.activity.OnBackPressedDispatcher:
     public void <init>()
     public void <init>(java.lang.Runnable)
@@ -6138,6 +6137,8 @@ androidx.activity.OnBackPressedDispatcher:
     public boolean hasEnabledCallbacks()
     private final java.lang.Runnable mFallbackOnBackPressed
     final java.util.ArrayDeque mOnBackPressedCallbacks
+com.google.common.eventbus.Dispatcher$LegacyAsyncDispatcher
+com.google.common.graph.MutableNetwork
 com.baseflow.permissionhandler.PermissionConstants
 com.baseflow.permissionhandler.PermissionConstants$PermissionStatus
 com.google.common.graph.MapIteratorCache$1$1
@@ -6372,8 +6373,8 @@ com.google.common.collect.LinkedHashMultimap$ValueSetLink
 androidx.core.provider.SelfDestructiveThread$2$1
 com.google.common.collect.TreeMultiset$2
 androidx.exifinterface.media.ExifInterface$ExifStreamType
-com.google.j2objc.annotations.WeakOuter
 kotlin.comparisons.ComparisonsKt___ComparisonsKt
+com.google.j2objc.annotations.WeakOuter
 org.intellij.lang.annotations.JdkConstants$TitledBorderTitlePosition
 com.google.common.collect.StandardTable$ColumnKeySet
 androidx.customview.widget.FocusStrategy$CollectionAdapter
@@ -6736,8 +6737,8 @@ kotlin.ULong$Companion
 com.google.common.util.concurrent.AggregateFutureState
 kotlin.ranges.IntRange
 com.google.common.collect.EnumMultiset$2$1
-com.google.errorprone.annotations.MustBeClosed
 kotlin.collections.IndexingIterator
+com.google.errorprone.annotations.MustBeClosed
 com.google.common.collect.ImmutableSortedMultiset$Builder
 androidx.loader.content.Loader$OnLoadCompleteListener
 com.google.common.util.concurrent.Striped$PowerOfTwoStriped
@@ -7361,8 +7362,8 @@ io.flutter.plugin.editing.InputConnectionAdaptor:
     private static final java.lang.String TAG
 com.google.common.base.Splitter$4
 com.example.imagegallerysaver.R$style
-androidx.core.view.WindowInsetsCompat
 com.google.common.collect.ConcurrentHashMultiset$1
+androidx.core.view.WindowInsetsCompat
 androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionAlgorithm
 com.google.common.hash.BloomFilter
 com.google.common.io.CharSink
@@ -7392,9 +7393,9 @@ androidx.fragment.R$id
 kotlin.coroutines.Continuation
 androidx.activity.R$string
 kotlin.system.TimingKt
-com.google.common.util.concurrent.ServiceManager$ServiceManagerState$1
-com.google.common.graph.Traverser$GraphTraverser$2
 com.google.common.graph.AbstractNetwork$2
+com.google.common.graph.Traverser$GraphTraverser$2
+com.google.common.util.concurrent.ServiceManager$ServiceManagerState$1
 com.google.common.collect.ForwardingImmutableList
 com.google.common.collect.Synchronized$SynchronizedAsMapEntries
 com.google.common.collect.Synchronized$SynchronizedAsMap
@@ -7539,8 +7540,8 @@ com.google.common.collect.Lists$AbstractListWrapper
 com.google.common.collect.FilteredEntryMultimap$AsMap$1EntrySetImpl
 com.google.common.util.concurrent.CycleDetectingLockFactory$WithExplicitOrdering
 androidx.core.database.sqlite.SQLiteCursorCompat
-org.checkerframework.checker.nullness.compatqual.KeyForType
 kotlin.coroutines.experimental.CoroutineContext
+org.checkerframework.checker.nullness.compatqual.KeyForType
 com.google.common.collect.AbstractMultiset$EntrySet
 androidx.fragment.app.ListFragment$2
 kotlin.jvm.internal.markers.KMappedMarker
@@ -7580,8 +7581,8 @@ com.google.common.collect.Multisets
 com.google.common.primitives.ImmutableDoubleArray$Builder
 io.flutter.plugins.imagepicker.R$style
 com.google.common.collect.CompoundOrdering
-com.google.j2objc.annotations.Weak
 kotlin.ranges.ULongRange
+com.google.j2objc.annotations.Weak
 io.flutter.embedding.engine.plugins.util.GeneratedPluginRegister:
     public void <init>()
     private static final java.lang.String TAG
@@ -8036,5 +8037,5 @@ io.flutter.view.AccessibilityBridge$SemanticsNode:
     private float previousScrollExtentMin
 io.flutter.embedding.engine.loader.FlutterLoader$InitResult:
     final java.lang.String dataDirPath
-io.flutter.plugin.platform.PlatformView$-CC
 androidx.lifecycle.DefaultLifecycleObserver$-CC
+io.flutter.plugin.platform.PlatformView$-CC

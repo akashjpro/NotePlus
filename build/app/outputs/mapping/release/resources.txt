@@ -573,6 +573,7 @@ Referenced Strings:
   birthdayDay
   birthdayMonth
   birthdayYear
+  bluetooth
   c
   cached_engine_id
   call
@@ -832,6 +833,7 @@ Referenced Strings:
   params
   password
   path
+  pathList
   permissions_handler
   personFamilyName
   personGivenName

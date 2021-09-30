@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:note/helper/appLocalizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter/cupertino.dart';
@@ -29,9 +30,10 @@ class _NoteScreenState extends State<NoteScreen> {
   late String uRIImage;
   late int color;
   late String urlWeb;
-
+  final ImagePicker _picker = ImagePicker();
   DateTime dateTimeNow = DateTime.now();
-  final format = new DateFormat('EEEE, dd MMMM yyyy hh:mm a');
+  final format =
+      new DateFormat('EEEE, dd MMMM yyyy hh:mm a', Platform.localeName);
   @override
   void initState() {
     super.initState();
@@ -39,7 +41,7 @@ class _NoteScreenState extends State<NoteScreen> {
     content = widget.note?.content ?? '';
     uRIImage = widget.note?.uriImage ?? '';
     urlWeb = widget.note?.webLink ?? '';
-    color = widget.note?.typeColor ?? 0xff292929;
+    color = widget.note?.typeColor ?? 0xFF000000;
   }
 
   @override
@@ -55,13 +57,16 @@ class _NoteScreenState extends State<NoteScreen> {
           alignment: Alignment.center,
           height: 30,
           width: 30,
-          
-          decoration:BoxDecoration(
-            color: Color(a),
-            borderRadius: BorderRadius.circular(15),
-            border: Border.all(width: 1,color: Colors.white)
-          ),
-          child: a == color? Icon(Icons.check,color: Colors.white,): Container(),
+          decoration: BoxDecoration(
+              color: Color(a),
+              borderRadius: BorderRadius.circular(15),
+              border: Border.all(width: 1, color: Colors.white)),
+          child: a == color
+              ? Icon(
+                  Icons.check,
+                  color: Colors.white,
+                )
+              : Container(),
         ),
       );
     }
@@ -75,7 +80,7 @@ class _NoteScreenState extends State<NoteScreen> {
           buildColor(0xFFD32F2F),
           buildColor(0xFF4527A0),
           buildColor(0xFF3D5AFE),
-          buildColor(0xFFFFEA00),
+          buildColor(0xFFE9AB17),
         ],
       ),
     );
@@ -85,19 +90,29 @@ class _NoteScreenState extends State<NoteScreen> {
           elevation: 0,
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
-            onPressed: () async {
-              if (title == '' && content == '') {
-                Navigator.of(context).pop();
-                print('''== Back don't save ==''');
-              } else {
-                addOrUpdateNote();
-                Navigator.of(context).pop();
-                print('''== Back and save ==''');
-              }
+            onPressed: () {
+              Navigator.of(context).pop();
             },
           ),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  if (title == '' && content == '') {
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text(
+                        AppLocalizations.of(context)!.translate("alert")!,
+                        textAlign: TextAlign.center,
+                      ),
+                    ));
+                  } else {
+                    addOrUpdateNote();
+                    Navigator.of(context).pop();
+                  }
+                },
+                icon: Icon(Icons.check))
+          ],
           title: Text(
-            "Note",
+            AppLocalizations.of(context)!.translate("note")!,
             style: TextStyle(
                 color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
           ),
@@ -107,7 +122,7 @@ class _NoteScreenState extends State<NoteScreen> {
           padding: EdgeInsets.all(15.0),
           child: ListView(
             children: <Widget>[
-              textFormTitle(),
+              textFormTitle(context),
               SizedBox(height: 8),
               Container(
                   alignment: Alignment.centerLeft,
@@ -118,7 +133,7 @@ class _NoteScreenState extends State<NoteScreen> {
               fineColor,
               TextButton(
                   onPressed: () {
-                    _showChoiceDialog(context);
+                    _showChoiceDialog(context, _picker);
                   },
                   child: Row(
                     children: [
@@ -130,7 +145,7 @@ class _NoteScreenState extends State<NoteScreen> {
                         ),
                       ),
                       Text(
-                        "Add image",
+                        AppLocalizations.of(context)!.translate("addImage")!,
                         style: TextStyle(color: Colors.white),
                       )
                     ],
@@ -149,13 +164,13 @@ class _NoteScreenState extends State<NoteScreen> {
                         padding: EdgeInsets.only(right: 3),
                       ),
                       Text(
-                        "Add url",
+                        AppLocalizations.of(context)!.translate("addUrl")!,
                         style: TextStyle(color: Colors.white),
                       )
                     ],
                   )),
               SizedBox(height: 8),
-              textFormContent(),
+              textFormContent(context),
               SizedBox(
                 height: 5,
               ),
@@ -168,7 +183,7 @@ class _NoteScreenState extends State<NoteScreen> {
         );
   }
 
-  Widget textFormTitle() {
+  Widget textFormTitle(BuildContext context) {
     return TextFormField(
       initialValue: title,
       onChanged: (text) {
@@ -178,13 +193,13 @@ class _NoteScreenState extends State<NoteScreen> {
       style: TextStyle(
           color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
       decoration: InputDecoration.collapsed(
-        hintText: "Note title",
-        hintStyle: TextStyle(color: Color(0xffCECECE)),
+        hintText: AppLocalizations.of(context)!.translate("noteTitle")!,
+        hintStyle: TextStyle(color: Color(0xffCECECE).withOpacity(0.8)),
       ),
     );
   }
 
-  Widget textFormContent() {
+  Widget textFormContent(BuildContext context) {
     return TextFormField(
       initialValue: content,
       maxLines: null,
@@ -195,8 +210,8 @@ class _NoteScreenState extends State<NoteScreen> {
       style: TextStyle(
           color: Colors.white, fontSize: 14, fontWeight: FontWeight.bold),
       decoration: InputDecoration.collapsed(
-          hintText: "Enter Note Here",
-          hintStyle: TextStyle(color: Color(0xffCECECE))),
+          hintText: AppLocalizations.of(context)!.translate("enterNote")!,
+          hintStyle: TextStyle(color: Color(0xffCECECE).withOpacity(0.8))),
     );
   }
 
@@ -257,8 +272,8 @@ class _NoteScreenState extends State<NoteScreen> {
     });
   }
 
-  _openGallery(BuildContext context) async {
-    final picture = await ImagePicker().pickImage(source: ImageSource.gallery);
+  _openGallery(BuildContext context, ImagePicker imagePicker) async {
+    final picture = await imagePicker.pickImage(source: ImageSource.gallery);
 
     if (picture != null) {
       setState(() {
@@ -268,8 +283,8 @@ class _NoteScreenState extends State<NoteScreen> {
     Navigator.of(context).pop();
   }
 
-  _openCamera(BuildContext context) async {
-    final picture = await ImagePicker().pickImage(source: ImageSource.camera);
+  _openCamera(BuildContext context, ImagePicker imagePicker) async {
+    final picture = await imagePicker.pickImage(source: ImageSource.camera);
     if (picture != null) {
       setState(() {
         _saveImage(File(picture.path));
@@ -283,15 +298,17 @@ class _NoteScreenState extends State<NoteScreen> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Paste url here: "),
+            title: Text(
+              AppLocalizations.of(context)!.translate("url")!,
+            ),
             content: Container(
-              child: textFormUrl(),
+              child: textFormUrl(context),
             ),
           );
         });
   }
 
-  Widget textFormUrl() {
+  Widget textFormUrl(BuildContext context) {
     return TextFormField(
       initialValue: urlWeb,
       onChanged: (text) {
@@ -299,37 +316,47 @@ class _NoteScreenState extends State<NoteScreen> {
           urlWeb = text;
         });
       },
+      onEditingComplete: () {
+        Navigator.of(context).pop();
+      },
       style: TextStyle(
           color: Colors.blue,
           fontSize: 14,
           fontWeight: FontWeight.w400,
           fontStyle: FontStyle.italic),
       decoration: InputDecoration.collapsed(
-          hintText: "Enter Url Here",
+          hintText: AppLocalizations.of(context)!.translate("enterUrl")!,
           hintStyle: TextStyle(color: Color(0xffCECECE))),
     );
   }
 
-  Future<void> _showChoiceDialog(BuildContext context) {
+  Future<void> _showChoiceDialog(
+      BuildContext context, ImagePicker imagePicker) {
     return showDialog(
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: Text("Make a choice!"),
+            title: Text(
+              AppLocalizations.of(context)!.translate("choice")!,
+            ),
             content: SingleChildScrollView(
               child: ListBody(
                 children: [
                   GestureDetector(
-                    child: Text("Gallery"),
+                    child: Text(
+                      AppLocalizations.of(context)!.translate("gallery")!,
+                    ),
                     onTap: () {
-                      _openGallery(context);
+                      _openGallery(context, imagePicker);
                     },
                   ),
                   Padding(padding: EdgeInsets.all(8.0)),
                   GestureDetector(
-                    child: Text("Camera"),
+                    child: Text(
+                      AppLocalizations.of(context)!.translate("camera")!,
+                    ),
                     onTap: () {
-                      _openCamera(context);
+                      _openCamera(context, imagePicker);
                     },
                   ),
                 ],
@@ -342,16 +369,15 @@ class _NoteScreenState extends State<NoteScreen> {
   Widget showImage() {
     return uRIImage == ''
         ? Container()
-        : Expanded(
-            child: Container(
-                padding: EdgeInsets.only(top: 10.0),
-                child: ClipRRect(
-                    child: Image.file(
-                  File(uRIImage.toString()),
-                  // width: 200,
-                  // height: 200,
-                  fit: BoxFit.cover,
-                ))));
+        : Container(
+            padding: EdgeInsets.only(top: 10.0),
+            child: ClipRRect(
+                child: Image.file(
+              File(uRIImage.toString()),
+              // width: 200,
+              // height: 200,
+              fit: BoxFit.cover,
+            )));
   }
 
   Widget showUrlWeb() {
