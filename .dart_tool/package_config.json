@@ -44,6 +44,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "crypto",
+      "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "cupertino_icons",
       "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.3",
       "packageUri": "lib/",
@@ -92,6 +98,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "flutter_switch",
+      "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_switch-0.3.2",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "flutter_test",
       "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/packages/flutter_test",
       "packageUri": "lib/",
@@ -106,6 +118,12 @@
     {
       "name": "fluttertoast",
       "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/fluttertoast-8.0.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "hive",
+      "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/hive-2.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -158,6 +176,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "local_auth",
+      "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/local_auth-1.1.8",
+      "packageUri": "lib/",
+      "languageVersion": "2.14"
+    },
+    {
       "name": "matcher",
       "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/matcher-0.12.10",
       "packageUri": "lib/",
@@ -166,6 +190,12 @@
     {
       "name": "meta",
       "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/meta-1.7.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
+      "name": "modal_bottom_sheet",
+      "rootUri": "file:///C:/Users/Admin/flutter_windows_2.2.1-stable/flutter/.pub-cache/hosted/pub.dartlang.org/modal_bottom_sheet-2.0.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
@@ -404,7 +434,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2021-09-30T02:56:59.115029Z",
+  "generated": "2021-11-07T04:13:07.796269Z",
   "generator": "pub",
   "generatorVersion": "2.14.2"
 }

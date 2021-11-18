@@ -42,7 +42,6 @@ class NotesDatabase {
       print('Insert done !');
     else
       throw Exception('Insert Faild');
-    ;
   } //insert
 
   Future<Note> readNote(int id) async {

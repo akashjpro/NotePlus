@@ -1,12 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:local_auth/auth_strings.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:note/components/gridview_widget.dart';
 import 'package:note/database/models/note.dart';
 import 'package:note/database/reponsitories/note_local_reponsitory.dart';
 import 'package:note/helper/appLocalizations.dart';
 import 'package:note/screens/note/note_screen.dart';
-
-import '../../routes.dart';
+import 'package:flutter/services.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 
 class Home extends StatefulWidget {
   static String routeName = "/home";
@@ -15,24 +18,105 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   List<Note> notes = [];
   List<Note> result = [];
-  late bool isLoading;
+  bool _vantay = false;
+  bool _guongmat = false;
+  bool isLoading = true;
   late TextEditingController searchQuery;
+  final LocalAuthentication auth = LocalAuthentication(); //authentication
+  late bool? _authenticated;
+
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    isLoading = false;
     searchQuery = TextEditingController(text: '');
-    refreshNotes();
-    print('init');
+    _authenticated = null;
+    initValueCheck();
   }
 
   @override
   void dispose() {
     NotesDatabase.instance.close();
+    setState(() {
+      _authenticated = false;
+    });
+    auth.stopAuthentication();
     super.dispose();
+  }
+
+  Future<void> _authenticateWithBiometrics(BuildContext context) async {
+    bool authenticated = false;
+    bool isAvailable = await auth.canCheckBiometrics;
+    bool isDeviceSupported = await auth.isDeviceSupported();
+    List<BiometricType> list = await auth.getAvailableBiometrics();
+
+    const androidStrings = const AndroidAuthMessages(
+        cancelButton: 'Hủy bỏ',
+        goToSettingsButton: 'Cài đặt',
+        goToSettingsDescription: 'Hãy bật xác thực vân tay trong phần cài đặt.',
+        signInTitle: 'Xác thực',
+        biometricHint: 'Để truy cập ứng dụng',
+        biometricNotRecognized: 'Chưa thiết lập sinh trắc học',
+        biometricSuccess: 'Xác thực thành công',
+        biometricRequiredTitle: 'Kiểu xác thực');
+    if (isAvailable && isDeviceSupported) {
+      try {
+        authenticated = await auth.authenticate(
+            localizedReason:
+                'Quét vân tay hoặc gương mặt để tiến hành xác thực',
+            useErrorDialogs: true,
+            stickyAuth: true,
+            biometricOnly: false,
+            androidAuthStrings: androidStrings);
+      } on PlatformException catch (e) {
+        print(e);
+        return;
+      }
+      if (!mounted) return;
+      setState(() {
+        _authenticated = authenticated;
+      });
+      refreshNotes();
+    }
+  }
+
+  Future<bool> _turnOnFinger(
+      BuildContext context, bool value, StateSetter myState) async {
+    bool authenticated = false;
+    bool isAvailable = await auth.canCheckBiometrics;
+    bool isDeviceSupported = await auth.isDeviceSupported();
+    List<BiometricType> list = await auth.getAvailableBiometrics();
+
+    const androidStrings = const AndroidAuthMessages(
+        cancelButton: 'Hủy bỏ',
+        goToSettingsButton: 'Cài đặt',
+        goToSettingsDescription: 'Hãy bật xác thực vân tay trong phần cài đặt.',
+        signInTitle: 'Xác thực',
+        biometricHint: 'Để truy cập ứng dụng',
+        biometricNotRecognized: 'Chưa thiết lập sinh trắc học',
+        biometricSuccess: 'Xác thực thành công',
+        biometricRequiredTitle: 'Kiểu xác thực');
+    if (isAvailable && isDeviceSupported) {
+      try {
+        authenticated = await auth.authenticate(
+            localizedReason: 'Quét vân tay để tiến hành bật xác thực',
+            useErrorDialogs: true,
+            stickyAuth: true,
+            biometricOnly: false,
+            androidAuthStrings: androidStrings);
+      } on PlatformException catch (e) {
+        print(e);
+        return false;
+      }
+      if (!mounted) return false;
+    }
+    if (authenticated) {
+      return true;
+    }
+    return false;
   }
 
   Future refreshNotes() async {
@@ -102,63 +186,227 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Scaffold(
-      backgroundColor: Color(0xff292929),
-      appBar: AppBar(
-        backgroundColor: Color(0xff292929),
-        elevation: 0,
-        title: Text(
-          AppLocalizations.of(context)!.translate("home")!,
-          style: TextStyle(
-              color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
-        ),
-      ),
-      body: Container(
-        margin: EdgeInsets.symmetric(horizontal: 15),
-        child: Stack(
-          children: [
-            Container(
-              child: ListView(
-                scrollDirection: Axis.vertical,
-                children: [
-                  searchSection(context),
-                  Center(
-                      child: isLoading
-                          ? CircularProgressIndicator()
-                          : result.isEmpty
-                              ? Text(
-                                  AppLocalizations.of(context)!
-                                      .translate("empty")!,
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 24),
-                                )
-                              : GridViewNotes(notes: result)),
-                ],
+    return isLoading
+        ? Container(
+            color: Colors.black.withOpacity(0.5),
+          )
+        : Scaffold(
+            backgroundColor: Color(0xff292929),
+            appBar: AppBar(
+              backgroundColor: Color(0xff292929),
+              elevation: 0,
+              title: Text(
+                AppLocalizations.of(context)!.translate("home")!,
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.bold),
               ),
+              actions: [
+                if (_authenticated!)
+                  IconButton(
+                      onPressed: () {
+                        _showBottom(context);
+                      },
+                      icon: Icon(
+                        Icons.lock,
+                        color: Colors.white,
+                      ))
+              ],
             ),
-            Positioned(
-              child: FlatButton(
-                onPressed: () async {
-                  await Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => NoteScreen()),
-                  );
-                  refreshNotes();
-                },
-                child: Icon(
-                  Icons.add,
-                  size: 50,
-                  color: Colors.black,
+            body: FutureBuilder(builder: (context, check) {
+              return _authenticated!
+                  ? Container(
+                      margin: EdgeInsets.symmetric(horizontal: 15),
+                      child: Stack(
+                        children: [
+                          Container(
+                            child: ListView(
+                              scrollDirection: Axis.vertical,
+                              children: [
+                                searchSection(context),
+                                Center(
+                                    child: isLoading
+                                        ? CircularProgressIndicator()
+                                        : result.isEmpty
+                                            ? Text(
+                                                AppLocalizations.of(context)!
+                                                    .translate("empty")!,
+                                                style: TextStyle(
+                                                    color: Colors.white,
+                                                    fontSize: 24),
+                                              )
+                                            : GridViewNotes(notes: result)),
+                              ],
+                            ),
+                          ),
+                          Positioned(
+                            child: FlatButton(
+                              onPressed: () async {
+                                await Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) => NoteScreen()),
+                                );
+                                refreshNotes();
+                              },
+                              child: Icon(
+                                Icons.add,
+                                size: 50,
+                                color: Colors.black,
+                              ),
+                              color: Color(0xfffdbe3b),
+                              shape: CircleBorder(),
+                              padding: EdgeInsets.all(10),
+                            ),
+                            bottom: 30,
+                            right: 0,
+                          )
+                        ],
+                      ),
+                    )
+                  : Container(
+                      height: MediaQuery.of(context).size.height,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                        children: [
+                          IconButton(
+                            iconSize: 100,
+                            icon: Icon(
+                              Icons.lock,
+                              color: Colors.white,
+                            ),
+                            onPressed: () =>
+                                _authenticateWithBiometrics(context),
+                          ),
+                          Text(
+                            'Vui lòng xác thực !',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    );
+            }));
+  }
+
+  void toggleSwitchVantay(bool value) {
+    setState(() {
+      _vantay = value;
+    });
+  }
+
+  void saveToPreferences(String key, bool value) async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setBool(key, value);
+  }
+
+  initValueCheck() async {
+    final SharedPreferences prefs = await _prefs;
+    if (prefs.getBool('vantay') == null || prefs.getBool('vantay') == false) {
+      setState(() {
+        _vantay = false;
+        print('Vân tay: $_vantay');
+      });
+    }
+    if (prefs.getBool('vantay') == true) {
+      setState(() {
+        _vantay = true;
+        print('Vân tay: $_vantay');
+      });
+    }
+    if (prefs.getBool('guongmat') == null ||
+        prefs.getBool('guongmat') == false) {
+      setState(() {
+        _guongmat = false;
+        print('Gương mặt: $_guongmat');
+      });
+    }
+    if (prefs.getBool('guongmat') == true) {
+      setState(() {
+        print('Gương mặt: $_guongmat');
+      });
+    }
+    if (!_vantay && !_guongmat) {
+      setState(() {
+        _authenticated = true;
+        print('authen : $_authenticated');
+      });
+    } else {
+      setState(() {
+        _authenticated = false;
+        print('authen : $_authenticated');
+      });
+    }
+    if (_authenticated != null) isLoading = false;
+    refreshNotes();
+  }
+
+  void _showBottom(BuildContext ctx) {
+    showMaterialModalBottomSheet(
+        backgroundColor: Colors.black,
+        context: ctx,
+        builder: (ctx) => StatefulBuilder(
+                builder: (BuildContext context, StateSetter setModelState) {
+              return Container(
+                height: 150,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ListTile(
+                      shape: Border(
+                          bottom:
+                              BorderSide(color: Colors.white.withOpacity(0.5))),
+                      title: Text(
+                        'Xác thực vân tay',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      trailing: Switch(
+                          activeColor: Colors.orange,
+                          activeTrackColor: Colors.yellow,
+                          inactiveThumbColor: Colors.white,
+                          inactiveTrackColor: Colors.orange,
+                          value: _vantay,
+                          onChanged: (value) async {
+                            var check = await _turnOnFinger(
+                                context, value, setModelState);
+                            if (check) {
+                              setModelState(() {
+                                _vantay = value;
+                              });
+                              _vantay = value;
+                              if (_vantay == true) {
+                                saveToPreferences('vantay', true);
+                              } else
+                                saveToPreferences('vantay', false);
+                            }
+                          }),
+                    ),
+                    ListTile(
+                      title: Text('Xác thực gương mặt',
+                          style: TextStyle(color: Colors.white)),
+                      trailing: Switch(
+                          activeColor: Colors.orange,
+                          activeTrackColor: Colors.yellow,
+                          inactiveThumbColor: Colors.white,
+                          inactiveTrackColor: Colors.orange,
+                          value: _guongmat,
+                          onChanged: (value) {
+                            setModelState(() {
+                              _guongmat = value;
+                              if (_guongmat == true) {
+                                saveToPreferences('guongmat', true);
+                              } else
+                                saveToPreferences('guongmat', false);
+                            });
+                          }),
+                    )
+                  ],
                 ),
-                color: Color(0xfffdbe3b),
-                shape: CircleBorder(),
-                padding: EdgeInsets.all(10),
-              ),
-              bottom: 30,
-              right: 0,
-            )
-          ],
-        ),
-      ),
-    );
+              );
+            }));
   }
 }
