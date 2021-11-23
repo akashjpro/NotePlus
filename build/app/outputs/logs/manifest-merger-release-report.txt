@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
-INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
-INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
-INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
+ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
+INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
+INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
+INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
 MERGED from [:local_auth] C:\Users\Admin\Desktop\THUCTAP\NotePlus\build\local_auth\intermediates\library_manifest\release\AndroidManifest.xml:2:1-11:12
 MERGED from [:image_picker] C:\Users\Admin\Desktop\THUCTAP\NotePlus\build\image_picker\intermediates\library_manifest\release\AndroidManifest.xml:2:1-19:12
 MERGED from [:flutter_plugin_android_lifecycle] C:\Users\Admin\Desktop\THUCTAP\NotePlus\build\flutter_plugin_android_lifecycle\intermediates\library_manifest\release\AndroidManifest.xml:2:1-7:12
@@ -39,20 +39,20 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.3.1] C:\Users\Admin\.g
 MERGED from [androidx.arch.core:core-runtime:2.1.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\28c8bed6fae67e41db98432923c9a958\core-runtime-2.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\b962778313a0e23f9ca3dbafc012c1af\interpolator-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\Admin\.gradle\caches\transforms-2\files-2.1\f3b962dc054ce7db5253c5bc0f32c1da\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
-INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
-INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
+INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
+INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
+INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
 	package
 		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:2:5-38
 		INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
+		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
 		INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-50:12
+		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:1-53:12
 		INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:1:11-69
@@ -99,7 +99,7 @@ ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidM
 	android:name
 		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:11:22-69
 application
-ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:12:4-49:19
+ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:12:4-52:19
 MERGED from [:image_picker] C:\Users\Admin\Desktop\THUCTAP\NotePlus\build\image_picker\intermediates\library_manifest\release\AndroidManifest.xml:7:5-17:19
 MERGED from [:image_picker] C:\Users\Admin\Desktop\THUCTAP\NotePlus\build\image_picker\intermediates\library_manifest\release\AndroidManifest.xml:7:5-17:19
 MERGED from [:url_launcher] C:\Users\Admin\Desktop\THUCTAP\NotePlus\build\url_launcher\intermediates\library_manifest\release\AndroidManifest.xml:7:5-12:19
@@ -156,6 +156,12 @@ ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidM
 		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:48:13-30
 	android:name
 		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:47:13-44
+meta-data#com.google.firebase.ml.vision.DEPENDENCIES
+ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:49:9-51:35
+	android:value
+		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:51:13-32
+	android:name
+		ADDED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml:50:13-70
 uses-sdk
 INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Admin\Desktop\THUCTAP\NotePlus\android\app\src\main\AndroidManifest.xml

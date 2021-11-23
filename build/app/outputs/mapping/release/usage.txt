@@ -2183,8 +2183,8 @@ com.google.common.util.concurrent.FuturesGetChecked$GetCheckedTypeValidatorHolde
 com.google.common.hash.AbstractStreamingHasher
 com.google.common.cache.Weigher
 com.google.common.hash.FarmHashFingerprint64
-com.google.common.collect.Maps$UnmodifiableNavigableMap
 com.google.common.graph.MapIteratorCache
+com.google.common.collect.Maps$UnmodifiableNavigableMap
 androidx.core.view.MenuItemCompat$OnActionExpandListener
 com.google.common.escape.CharEscaperBuilder
 com.google.common.collect.Maps$FilteredEntryMap
@@ -4183,8 +4183,8 @@ io.flutter.embedding.engine.FlutterEngineConnectionRegistry:
     private static final java.lang.String TAG
 org.intellij.lang.annotations.JdkConstants
 com.google.common.cache.LongAddables$PureJavaLongAddable
-com.google.common.collect.ForwardingList
 com.google.common.collect.MapMaker$Dummy
+com.google.common.collect.ForwardingList
 com.google.common.graph.ImmutableNetwork$2
 com.google.common.cache.LocalCache$WriteThroughEntry
 androidx.core.app.JobIntentService$JobServiceEngineImpl$WrapperWorkItem
@@ -7392,8 +7392,8 @@ io.github.ponnamkarthik.toast.fluttertoast.R$id:
     public static final int text2
     public static final int time
     public static final int title
-androidx.core.text.util.LinkifyCompat
 androidx.core.text.TextDirectionHeuristicsCompat$TextDirectionHeuristicImpl
+androidx.core.text.util.LinkifyCompat
 androidx.lifecycle.livedata.core.R
 com.google.common.collect.ImmutableSortedMapFauxverideShim
 androidx.vectordrawable.animated.R$color

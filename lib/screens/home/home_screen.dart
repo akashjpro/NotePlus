@@ -195,6 +195,7 @@ class _HomeState extends State<Home> {
             appBar: AppBar(
               backgroundColor: Color(0xff292929),
               elevation: 0,
+              automaticallyImplyLeading: false,
               title: Text(
                 AppLocalizations.of(context)!.translate("home")!,
                 style: TextStyle(
@@ -306,26 +307,25 @@ class _HomeState extends State<Home> {
 
   initValueCheck() async {
     final SharedPreferences prefs = await _prefs;
-    if (prefs.getBool('vantay') == null || prefs.getBool('vantay') == false) {
+    if (prefs.get('vantay') == null || prefs.get('vantay') == false) {
       setState(() {
         _vantay = false;
         print('Vân tay: $_vantay');
       });
     }
-    if (prefs.getBool('vantay') == true) {
+    if (prefs.get('vantay') == true) {
       setState(() {
         _vantay = true;
         print('Vân tay: $_vantay');
       });
     }
-    if (prefs.getBool('guongmat') == null ||
-        prefs.getBool('guongmat') == false) {
+    if (prefs.get('guongmat') == null || prefs.get('guongmat') == false) {
       setState(() {
         _guongmat = false;
         print('Gương mặt: $_guongmat');
       });
     }
-    if (prefs.getBool('guongmat') == true) {
+    if (prefs.get('guongmat') == true) {
       setState(() {
         print('Gương mặt: $_guongmat');
       });
@@ -380,6 +380,8 @@ class _HomeState extends State<Home> {
                               _vantay = value;
                               if (_vantay == true) {
                                 saveToPreferences('vantay', true);
+                                Navigator.of(context)
+                                    .pushReplacementNamed(Home.routeName);
                               } else
                                 saveToPreferences('vantay', false);
                             }
