@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:local_auth/auth_strings.dart';
@@ -47,29 +49,39 @@ class _HomeState extends State<Home> {
     super.dispose();
   }
 
-  Future<void> _authenticateWithBiometrics(BuildContext context) async {
+  var androidStrings = const AndroidAuthMessages(
+      cancelButton: 'Hủy bỏ',
+      goToSettingsButton: 'Cài đặt',
+      goToSettingsDescription: 'Hãy bật xác thực vân tay trong phần cài đặt.',
+      signInTitle: 'Xác thực',
+      biometricHint: 'Để truy cập ứng dụng',
+      biometricNotRecognized: 'Chưa thiết lập sinh trắc học',
+      biometricSuccess: 'Xác thực thành công',
+      biometricRequiredTitle: 'Kiểu xác thực');
+
+  var iosStrings = const IOSAuthMessages(
+      cancelButton: 'Hủy bỏ',
+      goToSettingsButton: 'Cài đặt',
+      goToSettingsDescription: 'Kiểm tra lại cài đặt vân tay');
+
+  var localizedReason = Platform.isAndroid
+      ? 'Quét vân tay hoặc hình vẽ để tiến hành xác thực'
+      : 'Quét vân tay hoặc mã pin để tiến hành xác thực';
+
+  Future<void> _authenticateWithLocalAuth(BuildContext context) async {
     bool authenticated = false;
     bool isAvailable = await auth.canCheckBiometrics;
     bool isDeviceSupported = await auth.isDeviceSupported();
     List<BiometricType> list = await auth.getAvailableBiometrics();
 
-    const androidStrings = const AndroidAuthMessages(
-        cancelButton: 'Hủy bỏ',
-        goToSettingsButton: 'Cài đặt',
-        goToSettingsDescription: 'Hãy bật xác thực vân tay trong phần cài đặt.',
-        signInTitle: 'Xác thực',
-        biometricHint: 'Để truy cập ứng dụng',
-        biometricNotRecognized: 'Chưa thiết lập sinh trắc học',
-        biometricSuccess: 'Xác thực thành công',
-        biometricRequiredTitle: 'Kiểu xác thực');
     if (isAvailable && isDeviceSupported) {
       try {
         authenticated = await auth.authenticate(
-            localizedReason:
-                'Quét vân tay hoặc gương mặt để tiến hành xác thực',
+            localizedReason: localizedReason,
             useErrorDialogs: true,
             stickyAuth: true,
             biometricOnly: false,
+            iOSAuthStrings: iosStrings,
             androidAuthStrings: androidStrings);
       } on PlatformException catch (e) {
         print(e);
@@ -83,29 +95,21 @@ class _HomeState extends State<Home> {
     }
   }
 
-  Future<bool> _turnOnFinger(
+  Future<bool> _turnOnLocalAuth(
       BuildContext context, bool value, StateSetter myState) async {
     bool authenticated = false;
     bool isAvailable = await auth.canCheckBiometrics;
     bool isDeviceSupported = await auth.isDeviceSupported();
     List<BiometricType> list = await auth.getAvailableBiometrics();
 
-    const androidStrings = const AndroidAuthMessages(
-        cancelButton: 'Hủy bỏ',
-        goToSettingsButton: 'Cài đặt',
-        goToSettingsDescription: 'Hãy bật xác thực vân tay trong phần cài đặt.',
-        signInTitle: 'Xác thực',
-        biometricHint: 'Để truy cập ứng dụng',
-        biometricNotRecognized: 'Chưa thiết lập sinh trắc học',
-        biometricSuccess: 'Xác thực thành công',
-        biometricRequiredTitle: 'Kiểu xác thực');
     if (isAvailable && isDeviceSupported) {
       try {
         authenticated = await auth.authenticate(
-            localizedReason: 'Quét vân tay để tiến hành bật xác thực',
+            localizedReason: localizedReason,
             useErrorDialogs: true,
             stickyAuth: true,
             biometricOnly: false,
+            iOSAuthStrings: iosStrings,
             androidAuthStrings: androidStrings);
       } on PlatformException catch (e) {
         print(e);
@@ -278,7 +282,7 @@ class _HomeState extends State<Home> {
                               color: Colors.white,
                             ),
                             onPressed: () =>
-                                _authenticateWithBiometrics(context),
+                                _authenticateWithLocalAuth(context),
                           ),
                           Text(
                             'Vui lòng xác thực !',
@@ -319,18 +323,7 @@ class _HomeState extends State<Home> {
         print('Vân tay: $_vantay');
       });
     }
-    if (prefs.get('guongmat') == null || prefs.get('guongmat') == false) {
-      setState(() {
-        _guongmat = false;
-        print('Gương mặt: $_guongmat');
-      });
-    }
-    if (prefs.get('guongmat') == true) {
-      setState(() {
-        print('Gương mặt: $_guongmat');
-      });
-    }
-    if (!_vantay && !_guongmat) {
+    if (!_vantay) {
       setState(() {
         _authenticated = true;
         print('authen : $_authenticated');
@@ -352,16 +345,18 @@ class _HomeState extends State<Home> {
         builder: (ctx) => StatefulBuilder(
                 builder: (BuildContext context, StateSetter setModelState) {
               return Container(
-                height: 150,
+                height: 60,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ListTile(
                       shape: Border(
+                          top: BorderSide(color: Colors.white.withOpacity(0.5)),
                           bottom:
                               BorderSide(color: Colors.white.withOpacity(0.5))),
                       title: Text(
-                        'Xác thực vân tay',
+                        'Xác thực',
                         style: TextStyle(color: Colors.white),
                       ),
                       trailing: Switch(
@@ -371,7 +366,7 @@ class _HomeState extends State<Home> {
                           inactiveTrackColor: Colors.orange,
                           value: _vantay,
                           onChanged: (value) async {
-                            var check = await _turnOnFinger(
+                            var check = await _turnOnLocalAuth(
                                 context, value, setModelState);
                             if (check) {
                               setModelState(() {
@@ -387,25 +382,6 @@ class _HomeState extends State<Home> {
                             }
                           }),
                     ),
-                    ListTile(
-                      title: Text('Xác thực gương mặt',
-                          style: TextStyle(color: Colors.white)),
-                      trailing: Switch(
-                          activeColor: Colors.orange,
-                          activeTrackColor: Colors.yellow,
-                          inactiveThumbColor: Colors.white,
-                          inactiveTrackColor: Colors.orange,
-                          value: _guongmat,
-                          onChanged: (value) {
-                            setModelState(() {
-                              _guongmat = value;
-                              if (_guongmat == true) {
-                                saveToPreferences('guongmat', true);
-                              } else
-                                saveToPreferences('guongmat', false);
-                            });
-                          }),
-                    )
                   ],
                 ),
               );
