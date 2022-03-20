@@ -128,7 +128,7 @@ class _HomeState extends State<Home> {
 
     this.notes = await NotesDatabase.instance.readAllNote();
     result.clear();
-    result.addAll(notes);
+    result.addAll(notes.reversed);
     setState(() => isLoading = false);
   }
 
